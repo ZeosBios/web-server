@@ -20,7 +20,7 @@ public:
 
 private:
     std::mutex m_mu;
-    std::condition_variable_any m_cond;
+    std::condition_variable m_cond;
 
     std::deque<char *> m_buffer;
     const unsigned int m_size = 10;

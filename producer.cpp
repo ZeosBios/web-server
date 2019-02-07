@@ -14,10 +14,8 @@ void producer::run(char * msg)
     while (true)
     {
         m_buff->add(msg);
-        g_cout_mu.lock();
+        std::lock_guard<std::mutex> lock(g_cout_mu);
         std::cout << "Produced: " << msg << std::endl;
         std::this_thread::sleep_for(std::chrono::milliseconds(50));
-        g_cout_mu.unlock();
-        return;
     }
 }
